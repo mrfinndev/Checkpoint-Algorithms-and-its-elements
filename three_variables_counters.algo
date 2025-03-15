@@ -1,0 +1,35 @@
+ALGORITHM SENTENCE
+
+VAR
+   vowelCount, wordCount, charCount : INTEGER;  // Variables to store the count of vowels, words, and characters
+   sentence : STRING[];  // Array to hold the input sentence (as a list of characters)
+
+BEGIN
+
+   charCount := 0;  // Initialize the character counter to 0
+   wordCount := 1;  // Initialize word count to 1 because there is at least one word in the sentence
+   vowelCount := 0; // Initialize vowel count to 0
+
+   write("Please type the sentence: ");  // Prompt the user to input a sentence
+   read(sentence);  // Read the sentence input by the user
+
+   REPEAT  // Start a loop to go through each character of the sentence
+
+      IF (sentence[charCount] = " ") THEN  // Check if the current character is a space
+         wordCount := wordCount + 1;  // If it's a space, increment the word count
+      END_IF
+
+      IF (sentence[charCount] in ["a", "e", "i", "o", "u", "y"]) THEN  // Check if the current character is a vowel (including 'y')
+         vowelCount := vowelCount + 1;  // If it's a vowel, increment the vowel count
+      END_IF
+
+      charCount := charCount + 1;  // Move to the next character in the sentence
+
+   UNTIL (sentence[charCount] = ".")  // Continue the loop until the sentence ends with a period ('.')
+
+   // After exiting the loop, print the results
+   write("The total number of characters is: ", charCount + 1);  // Output the total number of characters (charCount is 0-based, so add 1)
+   write("The total number of words is: ", wordCount);  // Output the total number of words
+   write("The total number of vowels is: ", vowelCount);  // Output the total number of vowels
+
+END
